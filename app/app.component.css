@@ -1,0 +1,25 @@
+table {
+  border: 1px solid #000;
+  width: 90vw;
+  margin: 5%;
+  color: #000;
+  border-collapse: separate;
+  border-spacing: revert;
+}
+
+tr td {
+  text-align: center;
+  padding: 10px;
+  font-weight: 500;
+}
+tr:nth-child(even) {
+  background-color: #cee2ee;
+}
+tr:nth-child(odd) {
+  background-color: #dfe4e8;
+}
+thead th {
+  background: #84bff0 !important;
+  width: 20%;
+  text-align: center;
+}

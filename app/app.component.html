@@ -1,0 +1,44 @@
+<div class="container">
+  <table class="customcolspantable" #table1>
+    <thead>
+      <tr>
+        <ng-container *ngFor="let headername of responseheader">
+          <th
+            [colSpan]="headername.colSpan"
+            [rowSpan]="headername.rowSpan"
+            class="firstrow"
+          >
+            {{ headername.displayName }}
+          </th>
+        </ng-container>
+      </tr>
+
+      <tr>
+        <ng-container *ngFor="let headername of responseheader">
+          <ng-container *ngFor="let subheaders of headername.subheaders">
+            <th>{{ subheaders.displayName }}</th>
+          </ng-container>
+        </ng-container>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let maindata of responsedata">
+        <tr>
+          <td>
+            {{ maindata['Timestamp'] }}
+          </td>
+
+          <ng-container *ngFor="let headername of responseheader">
+            <ng-container *ngIf="headername.colSpan > 1">
+              <ng-container *ngFor="let subheaders of headername.subheaders">
+                <td>{{ maindata[headername.name][0][subheaders.name] }}</td>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+
+  <button type="button" (click)="fireEvent()">Export</button>
+</div>
